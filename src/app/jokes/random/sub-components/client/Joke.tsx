@@ -1,7 +1,8 @@
 'use client';
 
-import { use, useState, useTransition } from 'react';
+import { use, useState } from 'react';
 import { getNewJoke } from '../../actions';
+import Button from '@/components/Button/Button';
 
 interface JokeProps {
   initialJoke: string;
@@ -17,9 +18,9 @@ export default function Joke({ initialJoke }: JokeProps) {
   };
 
   return (
-    <section className="flex flex-col gap-4">
+    <section className="p-4 flex flex-col gap-4">
       <p>{joke}</p>
-      <button onClick={handleRefetch}>Get new joke</button>
+      <Button onClick={handleRefetch}>Get New Joke</Button>
     </section>
   );
 }
