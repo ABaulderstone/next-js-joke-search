@@ -29,8 +29,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen w-full md:w-10/12 lg:w-8/12 flex flex-col justify-start`}
       >
         <header>
-          <nav>
-            <Link href={'/jokes/search'}>Search For Jokes</Link>
+          <nav className="flex justify-start pl-4 gap-4">
+            <Link href="/jokes/search">Search For Jokes</Link>
+            <Link href="/jokes/random">Random Joke</Link>
           </nav>
         </header>
         <main className="flex-grow">{children}</main>
