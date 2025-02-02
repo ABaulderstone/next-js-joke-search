@@ -1,6 +1,7 @@
 'use client';
 
 import { FormEvent } from 'react';
+import Button from '@/components/Button/Button';
 
 interface JokeSearchFormProps {
   onSearch: (searchTerm: string) => unknown;
@@ -15,8 +16,14 @@ const JokeSearchForm = ({ onSearch }: JokeSearchFormProps) => {
 
   return (
     <form className="flex flex-row gap-2" onSubmit={handleSubmit}>
-      <input name="query" placeholder="search for a joke" />
-      <button type="submit">Search</button>
+      <input
+        className="rounded p-2"
+        name="query"
+        placeholder="search for a joke"
+      />
+      <Button className="h-full m-0" type="submit">
+        Submit
+      </Button>
     </form>
   );
 };

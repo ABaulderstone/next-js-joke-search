@@ -21,7 +21,8 @@ export const generateMetadata = async ({
 };
 
 const JokeSearchPage = async ({ searchParams }: JokeSearchPageProps) => {
-  const { query } = await searchParams;
+  const { query, page } = await searchParams;
+
   return (
     <section className="py-5 pl-10 flex flex-col justify-start gap-4">
       <MainHeading>
