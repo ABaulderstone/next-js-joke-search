@@ -1,4 +1,5 @@
 import { fetchJokesBySearchTerm } from '@/lib/services/jokes';
+import Link from 'next/link';
 
 interface JokeResultsProps {
   query: string;
@@ -19,7 +20,7 @@ export default async function JokeResults({
       {results.length > 0 ? (
         <section className="flex flex-col gap-1">
           {results.map((response) => (
-            <div key={response.id}>{response.joke}</div>
+            <Link href={`/jokes/${response.id}`}>{response.joke}</Link>
           ))}
         </section>
       ) : (

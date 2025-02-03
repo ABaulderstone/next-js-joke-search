@@ -1,10 +1,7 @@
 import MainHeading from '@/components/MainHeading';
-
 import JokeSearchWrapper from './sub-components/client/JokeSearchWrapper';
-
 import JokeResults from './sub-components/server/JokeResults';
 import { Suspense } from 'react';
-import JokeResultsSkeleton from './sub-components/server/JokeResultsSkeleton';
 import Spinner from '../../../components/Spinner/Spinner';
 
 interface JokeSearchPageProps {
