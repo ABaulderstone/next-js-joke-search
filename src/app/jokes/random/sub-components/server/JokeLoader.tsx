@@ -1,4 +1,4 @@
-import { fetchRandomJoke } from '@/lib/api';
+import { fetchRandomJoke } from '@/lib/services/jokes';
 import Joke from '../client/Joke';
 
 export default async function JokeLoader() {

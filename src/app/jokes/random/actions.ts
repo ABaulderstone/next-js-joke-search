@@ -1,6 +1,6 @@
 'use server';
 
-import { fetchRandomJoke } from '@/lib/api';
+import { fetchRandomJoke } from '@/lib/services/jokes';
 
 export const getNewJoke = async () => {
   const { joke } = await fetchRandomJoke();

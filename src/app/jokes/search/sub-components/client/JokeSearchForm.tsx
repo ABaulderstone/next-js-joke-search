@@ -20,6 +20,7 @@ const JokeSearchForm = ({ onSearch }: JokeSearchFormProps) => {
         className="rounded p-2"
         name="query"
         placeholder="search for a joke"
+        required
       />
       <Button className="h-full m-0" type="submit">
         Submit

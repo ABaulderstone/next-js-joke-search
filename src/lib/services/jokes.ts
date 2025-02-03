@@ -1,4 +1,4 @@
-import { transformToCamelCase } from '@/utils/object-utils';
+import { transformToCamelCase } from '@/lib/utils/object-utils';
 
 import { APIError } from './errors';
 
@@ -41,7 +41,7 @@ export const fetchRandomJoke = async () => {
 
 export const fetchJokesBySearchTerm = async (searchTerm = '', page = 1) => {
   const response = await fetch(
-    `https://icanhazdadjoke.com/search?page=${page}&term=${searchTerm}`,
+    `https://icanhazdadjoke.com/search?limit=5&page=${page}&term=${searchTerm}`,
     {
       headers: { Accept: 'application/json' },
     }

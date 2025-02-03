@@ -7,7 +7,7 @@ const JokeSearchWrapper = () => {
   const router = useRouter();
   const onSearch = (term: string) => {
     if (term.trim().length > 0) {
-      router.push('/jokes/search?query=' + term);
+      router.push('/jokes/search?page=1&query=' + term);
     }
   };
   return (
