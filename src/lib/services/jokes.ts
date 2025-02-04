@@ -54,6 +54,21 @@ export const fetchJokesBySearchTerm = async (searchTerm = '', page = 1) => {
   return transformToCamelCase<JokeSearchResponse>(data);
 };
 
+export const fetchAllJokes = async (page: string) => {
+  const response = await fetch(
+    `https://icanhazdadjoke.com/search?limit=10&page=${page}`,
+    {
+      headers: { Accept: 'application/json' },
+    }
+  );
+
+  if (!response.ok) {
+    throw new APIError('Failed to fetch', response.status);
+  }
+  const data = (await response.json()) as JokeSearchResponseRaw;
+  return transformToCamelCase<JokeSearchResponse>(data);
+};
+
 export const fetchJokeById = async (id: string) => {
   const response = await fetch('https://icanhazdadjoke.com/j/' + id, {
     headers: { Accept: 'application/json' },

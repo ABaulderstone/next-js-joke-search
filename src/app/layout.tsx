@@ -30,6 +30,7 @@ export default function RootLayout({
       >
         <header>
           <nav className="flex justify-start pl-4 gap-4">
+            <Link href={'/jokes'}>All Jokes</Link>
             <Link href="/jokes/search">Search For Jokes</Link>
             <Link href="/jokes/random">Random Joke</Link>
           </nav>
