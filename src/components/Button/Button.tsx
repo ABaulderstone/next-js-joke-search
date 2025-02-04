@@ -13,7 +13,7 @@ export default function Button({
 }: ButtonProps) {
   return (
     <button
-      className={`bg-blue-600 p-2 m-2 rounded text-white w-fit ${className}`}
+      className={`bg-blue-600 p-2 m-2 rounded text-white w-fit disabled:bg-slate-400 ${className}`}
       {...rest}
     >
       {children}
