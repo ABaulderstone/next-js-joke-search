@@ -21,7 +21,7 @@ export default async function JokeResults({
       {results.length > 0 ? (
         <section className="flex flex-col gap-1">
           {results.map((response) => (
-            <Link href={`/jokes/search/${response.id}`}>{response.joke}</Link>
+            <Link href={`/jokes/${response.id}`}>{response.joke}</Link>
           ))}
           <PaginationWrapper
             currentPage={currentPage}

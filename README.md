@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# This Guide
 
-## Getting Started
+This app is intented as a **quick** overview to help you get accustomed to [Next.Js](https://nextjs.org/) patterns.
+Because I want to expose you to as many features as possible this does not neccesarily reflect a consistent or best practice approach. This is also an opinionated guide, you will likely encounter different folder structures, methods for handling errors, etc as you work on a variety of different projects
 
-First, run the development server:
+It's also worth noting that this guide was made in early 2025 using Next v15. This information could become outdated, and you will need to consult the most up to date documentation if anything here is broken.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Next Js
+
+Next.Js is a framework built on top of React, many of the features that have been available for some time in Next are experimental React features that will likely become avialble in React 19 (still in beta as of early 2025). In fact some of the biggest focuses of this guide will be React features:
+
+- Server Components
+- Suspense Boundaries
+- use hook
+
+Nest also includes additional functionality like:
+
+- File Based routing
+- API routes
+- Middleware
+
+### Routes
+
+One of the biggest differences from React is the way Next handles routes. Instead of using something like [React Router](https://reactrouter.com/) Next has **folder based** routing enabled by default.
+(This guide uses the app folder based routing approach)
+Inside `/app` you'll notice a `layout.tsx` and a `page.tsx`
+You can think of this like the `App` component in a React application `layout.tsx` handles the things we might want to appear everywhere in our application:
+
+- Navigation
+- Footer
+- Global styling
+  and `page.tsx` handles the 'page' we want to appear at the root route `/`
+  Inside `/app` there are some nested folders. A folder **only** becomes a route if there is a `page.tsx` file inside that folder.
+  Looking at the structure inside the app folder
+
+```
+├── favicon.ico
+├── globals.css
+├── jokes
+│   ├── [id]
+│   │   ├── error.tsx
+│   │   ├── loading.tsx
+│   │   └── page.tsx
+│   ├── page.tsx
+│   ├── random
+│   │   ├── actions.ts
+│   │   ├── page.tsx
+│   │   └── sub-components
+│   │       ├── client
+│   │       │   └── Joke.tsx
+│   │       └── server
+│   │           └── JokeLoader.tsx
+│   ├── search
+│   │   ├── page.tsx
+│   │   └── sub-components
+│   │       ├── client
+│   │       │   ├── JokeSearchForm.tsx
+│   │       │   ├── JokeSearchWrapper.tsx
+│   │       │   └── PaginationWrapper.tsx
+│   │       └── server
+│   │           ├── JokeResults.tsx
+│   │           └── JokeResultsSkeleton.tsx
+│   └── sub-components
+│       └── client
+│           └── AllJokesPaginationWrapper.tsx
+├── layout.tsx
+└── page.tsx
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+We can infer that there is a `/` route, as well as `/jokes` `/jokes/random` `/jokes/search` and `/jokes/[id]`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Dynamic Route
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`/jokes/[id]` is a **dynamic route**. This works exactly like
 
-## Learn More
+```jsx
+<Route path="/jokes/:id" />
+```
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+would work in React Router
